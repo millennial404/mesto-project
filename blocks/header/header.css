@@ -2,5 +2,12 @@
   max-width: 880px;
   height: auto;
   margin: 0 auto;
-  padding: 45px 16px 0;
+  padding: 45px 0 41px;
+  border-bottom: 1px solid rgba(84,84,84,.7);
+}
+@media screen and (max-width: 912px){
+  .header {
+    padding-left: 27px;
+    padding-right: 27px;
+  }
 }
