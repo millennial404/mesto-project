@@ -4,10 +4,24 @@
   margin: 0 auto 50px;
   display: flex;
   align-items: center;
+
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 912px){
   .profile {
     padding-left: 27px;
     padding-right: 27px;
+  }
+}
+@media screen and (max-width: 725px){
+  .profile {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 350px){
+  .profile {
+    padding-left: 19px;
+    padding-right: 19px;
+    margin-bottom: 36px;
   }
 }

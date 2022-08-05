@@ -7,6 +7,7 @@
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__info/profile__info.css";
 @import "../blocks/profile/__name/profile__name.css";
+@import "../blocks/profile/__about-myself/profile__about-myself.css";
 @import "../blocks/profile/__profession/profile__profession.css";
 @import "../blocks/profile/__add-button/profile__add-button.css";
 @import "../blocks/profile/__edit-button/profile__edit-button.css";

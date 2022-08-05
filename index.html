@@ -8,6 +8,7 @@
     <title>Mesto-Russia</title>
   </head>
   <body class="body">
+    <!-- HEADER -->
     <header class="header">
       <img
         class="header__logo"
@@ -15,7 +16,9 @@
         alt="Логотип Mesto-Russia"
       />
     </header>
+    <!-- CONTENT -->
     <main class="content">
+      <!-- PROFILE -->
       <section class="profile">
         <img
           src="./images/profile/avatar.jpg"
@@ -23,19 +26,23 @@
           class="profile__avatar"
         />
         <div class="profile__info">
-          <h2 class="profile__name">Жак-Ив Кусто</h2>
-          <p class="profile__profession">Исследователь океана</p>
+          <div class="profile__about-myself">
+            <h2 class="profile__name">Жак-Ив Кусто</h2>
+            <a href="#" class="profile__edit-button"></a>
+          </div>
+            <p class="profile__profession">Исследователь океана</p>
+          </div>
         </div>
-        <a href="#" class="profile__edit-button"></a>
         <a href="#" class="profile__add-button"></a>
       </section>
+      <!-- ФОТОКАРТОЧКИ -->
       <section aria-label="Карточки мест">
         <ul class="cards">
           <li class="card">
             <img
               class="card__image"
               src="./images/cards/karatchaevsk.jpg"
-              alt=""
+              alt="Фото храма Коротчаевск"
             />
             <div class="card__bottom">
               <p class="card__caption">Карачаевск</p>
@@ -46,7 +53,7 @@
             <img
               class="card__image"
               src="./images/cards/elbrus.jpg"
-              alt=""
+              alt="Фото горы Эльбрус"
             />
             <div class="card__bottom">
               <p class="card__caption">Гора Эльбрус</p>
@@ -57,7 +64,7 @@
             <img
               class="card__image"
               src="./images/cards/dombai.png"
-              alt=""
+              alt="Горы Домбая"
             />
             <div class="card__bottom">
               <p class="card__caption">Домбай</p>
@@ -68,7 +75,7 @@
             <img
               class="card__image"
               src="./images/cards/arhyz.jpg"
-              alt=""
+              alt="Фото Архыз"
             />
             <div class="card__bottom">
               <p class="card__caption">Архыз</p>
@@ -79,7 +86,7 @@
             <img
               class="card__image"
               src="./images/cards/vodopad.jpg"
-              alt=""
+              alt="Фото Софийских водопадов"
             />
             <div class="card__bottom">
               <p class="card__caption">Софийские водопады</p>
@@ -90,7 +97,7 @@
             <img
               class="card__image"
               src="./images/cards/teberda.jpg"
-              alt=""
+              alt="Фото вид на горы Теберды"
             />
             <div class="card__bottom">
               <p class="card__caption">Теберда</p>
@@ -100,17 +107,19 @@
         </ul>
       </section>
     </main>
+    <!-- FOOTER -->
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+    <!-- POPUP РЕДАКТИРОВАНИЕ ПРОФИЛЯ-->
     <div class="popup popup_opened">
       <div class="popup__body">
         <div class="popup__container">
           <a href="#" class="popup__close"></a>
           <h3 class="popup__title">Редактировать профиль</h3>
           <fieldset class="popup__form">
-            <input class="popup__input popup__profile-name" type="text">
-            <input class="popup__input popup__profile-profession" type="text">
+            <input class="popup__input popup__profile-name" type="text" placeholder="Жак-Ив Кусто">
+            <input class="popup__input popup__profile-profession" type="text" placeholder="Исследователь океана">
             <input class="popup__button" type="submit" value="Сохранить">
           </fieldset>
         </div>

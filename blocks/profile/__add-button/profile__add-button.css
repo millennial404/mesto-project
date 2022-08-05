@@ -4,11 +4,20 @@
   background-position: 50% 50%;
   width: 22px;
   height: 22px;
-  padding: 13px 63px;
+  padding: 12px 62px;
   border: 2px solid #FFFFFF;
   display: flex;
   margin-left:auto
 }
 .profile__add-button:hover {
   opacity: 0.6;
+}
+@media screen and (max-width: 710px){
+  .profile__add-button {
+    width: 16px;
+    height: 16px;
+    background-size: 16px;
+    margin: 32px 0 0;
+    padding: 15px 131px;
+  }
 }

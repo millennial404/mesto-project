@@ -2,3 +2,8 @@
   max-width: 142px;
   height: auto;
 }
+@media screen and (max-width: 542px){
+  .header__logo {
+    max-width: 104px;
+  }
+}
