@@ -29,7 +29,7 @@
         <a href="#" class="profile__edit-button"></a>
         <a href="#" class="profile__add-button"></a>
       </section>
-      <section>
+      <section aria-label="Карточки мест">
         <ul class="cards">
           <li class="card">
             <img
@@ -38,8 +38,8 @@
               alt=""
             />
             <div class="card__bottom">
-              <p class="card__caption">Каратчаевск</p>
-              <a href="#" class="card__like"></a>
+              <p class="card__caption">Карачаевск</p>
+              <a href="#" class="card__like card__like_status_disabled"></a>
             </div>
           </li>
           <li class="card">
@@ -50,7 +50,7 @@
             />
             <div class="card__bottom">
               <p class="card__caption">Гора Эльбрус</p>
-              <a href="#" class="card__like"></a>
+              <a href="#" class="card__like card__like_status_active "></a>
             </div>
           </li>
           <li class="card">
@@ -61,7 +61,7 @@
             />
             <div class="card__bottom">
               <p class="card__caption">Домбай</p>
-              <a href="#" class="card__like"></a>
+              <a href="#" class="card__like card__like_status_disabled"></a>
             </div>
           </li>
           <li class="card">
@@ -72,7 +72,7 @@
             />
             <div class="card__bottom">
               <p class="card__caption">Архыз</p>
-              <a href="#" class="card__like"></a>
+              <a href="#" class="card__like card__like_status_disabled"></a>
             </div>
           </li>
           <li class="card">
@@ -83,7 +83,7 @@
             />
             <div class="card__bottom">
               <p class="card__caption">Софийские водопады</p>
-              <a href="#" class="card__like"></a>
+              <a href="#" class="card__like card__like_status_disabled"></a>
             </div>
           </li>
           <li class="card">
@@ -94,7 +94,7 @@
             />
             <div class="card__bottom">
               <p class="card__caption">Теберда</p>
-              <a href="#" class="card__like"></a>
+              <a href="#" class="card__like card__like_status_disabled"></a>
             </div>
           </li>
         </ul>
@@ -103,5 +103,18 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+    <div class="popup popup_opened">
+      <div class="popup__body">
+        <div class="popup__container">
+          <a href="#" class="popup__close"></a>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <fieldset class="popup__form">
+            <input class="popup__input popup__profile-name" type="text">
+            <input class="popup__input popup__profile-profession" type="text">
+            <input class="popup__button" type="submit" value="Сохранить">
+          </fieldset>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

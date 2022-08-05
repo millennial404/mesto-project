@@ -1,0 +1,5 @@
+.card__like_status_active {
+  background: url(../../../../images/cards/like_on.svg);
+  width: 22px;
+  height: 19px;
+}
