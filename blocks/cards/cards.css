@@ -1,0 +1,12 @@
+.cards {
+  list-style-type: none;
+  line-height: 0;
+  padding: 0 27px;
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-template-rows: repeat(auto-fit, 361px);
+  gap: 20px 17px;
+  justify-content: center;
+}

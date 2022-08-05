@@ -8,6 +8,7 @@
   border: 2px solid #FFFFFF;
   display: flex;
   margin-left:auto
-
-
+}
+.profile__add-button:hover {
+  opacity: 0.6;
 }

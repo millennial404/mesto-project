@@ -1,0 +1,7 @@
+.card__image {
+  max-width: 282px;
+  object-fit: cover;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

@@ -4,27 +4,104 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto-Russia</title>
   </head>
   <body class="body">
     <header class="header">
-      <img class="header__logo" src="./images/header/logo_mesto.svg" alt="Логотип Mesto-Russia">
+      <img
+        class="header__logo"
+        src="./images/header/logo_mesto.svg"
+        alt="Логотип Mesto-Russia"
+      />
     </header>
     <main class="content">
       <section class="profile">
-        <img src="./images/profile/avatar.jpg" alt="Аватар Жак-Ив Кусто" class="profile__avatar">
-          <div class="profile__info">
-            <h2 class="profile__name">Жак-Ив Кусто</h2>
-            <p class="profile__profession">Исследователь океана</p>
-          </div>
-          <div class="profile__edit-button"></div>
-          <div class="profile__add-button"></div>
+        <img
+          src="./images/profile/avatar.jpg"
+          alt="Аватар Жак-Ив Кусто"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h2 class="profile__name">Жак-Ив Кусто</h2>
+          <p class="profile__profession">Исследователь океана</p>
+        </div>
+        <a href="#" class="profile__edit-button"></a>
+        <a href="#" class="profile__add-button"></a>
       </section>
-      <section class="cards">
-
+      <section>
+        <ul class="cards">
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/cards/karatchaevsk.jpg"
+              alt=""
+            />
+            <div class="card__bottom">
+              <p class="card__caption">Каратчаевск</p>
+              <a href="#" class="card__like"></a>
+            </div>
+          </li>
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/cards/elbrus.jpg"
+              alt=""
+            />
+            <div class="card__bottom">
+              <p class="card__caption">Гора Эльбрус</p>
+              <a href="#" class="card__like"></a>
+            </div>
+          </li>
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/cards/dombai.png"
+              alt=""
+            />
+            <div class="card__bottom">
+              <p class="card__caption">Домбай</p>
+              <a href="#" class="card__like"></a>
+            </div>
+          </li>
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/cards/arhyz.jpg"
+              alt=""
+            />
+            <div class="card__bottom">
+              <p class="card__caption">Архыз</p>
+              <a href="#" class="card__like"></a>
+            </div>
+          </li>
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/cards/vodopad.jpg"
+              alt=""
+            />
+            <div class="card__bottom">
+              <p class="card__caption">Софийские водопады</p>
+              <a href="#" class="card__like"></a>
+            </div>
+          </li>
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/cards/teberda.jpg"
+              alt=""
+            />
+            <div class="card__bottom">
+              <p class="card__caption">Теберда</p>
+              <a href="#" class="card__like"></a>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
-    <footer class="footer"></footer>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
   </body>
 </html>
