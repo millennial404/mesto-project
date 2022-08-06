@@ -6,7 +6,7 @@
   font-weight: 400;
   line-height: 1.2;
 }
-@media screen and (max-width: 825px){
+@media screen and (max-width: 825px) {
   .profile__profession {
     font-size: 14px;
     padding-right: 38px;

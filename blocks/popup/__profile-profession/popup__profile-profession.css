@@ -1,6 +1,12 @@
 .popup__profile-profession {
   margin-bottom: 48px;
 }
+.popup__profile-profession::placeholder {
+  color: #000;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2;
+}
 @media screen and (max-width: 370px) {
   .popup__profile-profession {
     margin-bottom: 45px;

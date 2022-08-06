@@ -3,3 +3,6 @@
   width: 22px;
   height: 19px;
 }
+.card__like_status_active:hover {
+  opacity: 1;
+}

@@ -12,22 +12,22 @@
   white-space: nowrap;
   overflow: hidden;
 }
-@media screen and (max-width: 920px){
+@media screen and (max-width: 920px) {
   .profile__name {
     max-width: 400px;
   }
 }
-@media screen and (max-width: 825px){
+@media screen and (max-width: 825px) {
   .profile__name {
     max-width: 300px;
   }
 }
-@media screen and (max-width: 825px){
+@media screen and (max-width: 825px) {
   .profile__name {
     font-size: 27px;
   }
 }
-@media screen and (max-width: 440px){
+@media screen and (max-width: 440px) {
   .profile__name {
     max-width: 220px;
     text-align: center;
