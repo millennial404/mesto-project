@@ -2,7 +2,10 @@
   background: url(../../../../images/cards/like_off.svg);
   width: 22px;
   height: 19px;
+  outline: none;
+  border: 0;
 }
 .card__like:hover {
   opacity: 0.5;
+  cursor: pointer;
 }

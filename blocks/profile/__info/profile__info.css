@@ -6,3 +6,10 @@
   padding: 0;
   line-height: 0;
 }
+@media screen and (max-width: 711px) {
+  .profile__info {
+    min-width: 282px;
+    margin-left: 0;
+    padding-left: 26px;
+  }
+}

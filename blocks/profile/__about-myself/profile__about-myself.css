@@ -2,8 +2,14 @@
   display: flex;
   margin-bottom: 6px;
 }
+@media screen and (max-width: 711px) {
+  .profile__about-myself{
+    justify-content: center;
+  }
+}
 @media screen and (max-width: 542px) {
   .profile__about-myself {
     margin-bottom: 10px;
   }
 }
+

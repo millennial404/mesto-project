@@ -1,5 +1,5 @@
-@import "../styles/normalize.css";
-@import "../fonts/fonts.css";
+@import "../vendor/normalize.css";
+@import "../vendor/fonts/fonts.css";
 @import "../blocks/body/body.css";
 @import "../blocks/header/__logo/header__logo.css";
 @import "../blocks/header/header.css";
@@ -18,7 +18,6 @@
 @import "../blocks/card/__caption/card__caption.css";
 @import "../blocks/card/__like/card__like.css";
 @import "../blocks/card/__like/_status/card__like_status_active.css";
-@import "../blocks/card/__like/_status/card__like_status_disabled.css";
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/popup/popup.css";

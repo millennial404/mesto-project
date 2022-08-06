@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
-    <title>Mesto-Russia</title>
+    <title>Место Россия</title>
   </head>
   <body class="body">
     <!-- HEADER -->
@@ -27,13 +27,12 @@
         />
         <div class="profile__info">
           <div class="profile__about-myself">
-            <h2 class="profile__name">Жак-Ив Кусто</h2>
-            <a href="#" class="profile__edit-button"></a>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button type="button" name="edit_profile" class="profile__edit-button"></button>
           </div>
-            <p class="profile__profession">Исследователь океана</p>
-          </div>
+          <p class="profile__profession">Исследователь океана</p>
         </div>
-        <a href="#" class="profile__add-button"></a>
+        <button type="button" name="add_photo" class="profile__add-button"></button>
       </section>
       <!-- ФОТОКАРТОЧКИ -->
       <section aria-label="Карточки мест">
@@ -42,68 +41,68 @@
             <img
               class="card__image"
               src="./images/cards/karatchaevsk.jpg"
-              alt="Фото храма Коротчаевск"
+              alt="Заброшенный храм на горе в Коротчаевске."
             />
             <div class="card__bottom">
-              <p class="card__caption">Карачаевск</p>
-              <a href="#" class="card__like"></a>
+              <h2 class="card__caption">Карачаевск</h2>
+              <button type="button" name="like" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img
               class="card__image"
               src="./images/cards/elbrus.jpg"
-              alt="Фото горы Эльбрус"
+              alt="Вид на гору Эльбрус из далека."
             />
             <div class="card__bottom">
-              <p class="card__caption">Гора Эльбрус</p>
+              <h2 class="card__caption">Гора Эльбрус</h2>
               <!-- Для активации лайка добавлен модификатор card__like_status_active -->
-              <a href="#" class="card__like card__like_status_active"></a>
+              <button type="button" name="like" class="card__like card__like_status_active"></button>
             </div>
           </li>
           <li class="card">
             <img
               class="card__image"
               src="./images/cards/dombai.png"
-              alt="Горы Домбая"
+              alt="Верхушки осеннего леса на фоне скальника в Домбае."
             />
             <div class="card__bottom">
-              <p class="card__caption">Домбай</p>
-              <a href="#" class="card__like"></a>
+              <h2 class="card__caption">Домбай</h2>
+              <button type="button" name="like" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img
               class="card__image"
               src="./images/cards/arhyz.jpg"
-              alt="Фото Архыз"
+              alt="Выложенное поленьями имя села Архыз вдоль туристической тропы."
             />
             <div class="card__bottom">
-              <p class="card__caption">Архыз</p>
-              <a href="#" class="card__like"></a>
+              <h2 class="card__caption">Архыз</h2>
+              <button type="button" name="like" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img
               class="card__image"
               src="./images/cards/vodopad.jpg"
-              alt="Фото Софийских водопадов"
+              alt="Зеленый луг на фоне Софийских водопадов."
             />
             <div class="card__bottom">
-              <p class="card__caption">Софийские водопады</p>
-              <a href="#" class="card__like"></a>
+              <h2 class="card__caption">Софийские водопады</h2>
+              <button type="button" name="like" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img
               class="card__image"
               src="./images/cards/teberda.jpg"
-              alt="Фото вид на горы Теберды"
+              alt="Отель у подножья горы в Теберде."
             />
             <div class="card__bottom">
-              <p class="card__caption">Теберда</p>
+              <h2 class="card__caption">Теберда</h2>
               <!-- Для активации лайка добавлен модификатор card__like_status_active -->
-              <a href="#" class="card__like card__like_status_active"></a>
+              <button type="button" name="like" class="card__like card__like_status_active"></button>
             </div>
           </li>
         </ul>
@@ -114,17 +113,28 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
     <!-- POPUP РЕДАКТИРОВАНИЕ ПРОФИЛЯ >> для включения добавть модификатор в блок popup-->
-    <div class="popup"> <!--popup_opened-->
+    <div class="popup">
+      <!--popup_opened-->
       <div class="popup__body">
-        <div class="popup__container">
-          <a href="#" class="popup__close"></a>
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <fieldset class="popup__form">
-            <input class="popup__input popup__profile-name" type="text" placeholder="Жак-Ив Кусто">
-            <input class="popup__input popup__profile-profession" type="text" placeholder="Исследователь океана">
-            <input class="popup__button" type="submit" value="Сохранить">
-          </fieldset>
-        </div>
+        <a href="#" class="popup__close"></a>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form" name="form_edit-profile">
+          <input
+            class="popup__input"
+            type="text"
+            name="name"
+            placeholder="Жак-Ив Кусто"
+          />
+          <input
+            class="popup__input"
+            type="text"
+            name="profession"
+            placeholder="Исследователь океана"
+          />
+          <button class="popup__button" type="submit" name="save_profile">
+            Сохранить
+          </button>
+        </form>
       </div>
     </div>
   </body>
