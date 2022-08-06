@@ -30,7 +30,5 @@
 @media screen and (max-width: 440px) {
   .profile__profession {
     max-width: 248px;
-    text-align: center;
-    line-height: 1.2;
   }
 }
