@@ -5,9 +5,11 @@
   background: url(../../../images/popup/Close_Icon.svg);
   width: 32px;
   height: 32px;
+  border: 0;
 }
 .popup__close:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 @media screen and (max-width: 550px) {
   .popup__close {
