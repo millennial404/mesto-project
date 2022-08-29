@@ -30,3 +30,7 @@ document.querySelector('.popup__form').addEventListener('submit', (evt) => evt.p
 
 // Сохраняем данные из формы при нажатии кнопки Сохранить
 popup_button_save.addEventListener('click', saveProfile);
+
+
+// ----------------------------------------------------------------------------------------------------------
+// Карточки
