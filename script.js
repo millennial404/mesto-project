@@ -33,4 +33,13 @@ popup_button_save.addEventListener('click', saveProfile);
 
 
 // ----------------------------------------------------------------------------------------------------------
-// Карточки
+// Карточкин POPUP
+const popup_add_card = document.querySelector('.popup-add-card');
+const add_button_card = document.querySelector('.profile__add-button');
+const popup_add_card_close = popup_add_card.querySelector('.popup__close');
+function addCardButtonOnOff() {
+  popup_add_card.classList.toggle('popup_opened');
+}
+add_button_card.addEventListener('click', addCardButtonOnOff);
+popup_add_card_close.addEventListener('click', addCardButtonOnOff);
+popup_add_card.querySelector('.popup__form').addEventListener('submit', (evt) => evt.preventDefault());

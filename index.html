@@ -43,6 +43,7 @@
               src="./images/cards/karatchaevsk.jpg"
               alt="Заброшенный храм на горе в Коротчаевске."
             />
+            <button type="button" name="mini-bin" class="card__mini-bin"></button>
             <div class="card__bottom">
               <h2 class="card__caption">Карачаевск</h2>
               <button type="button" name="like" class="card__like"></button>
@@ -54,6 +55,7 @@
               src="./images/cards/elbrus.jpg"
               alt="Вид на гору Эльбрус из далека."
             />
+            <button type="button" name="mini-bin" class="card__mini-bin"></button>
             <div class="card__bottom">
               <h2 class="card__caption">Гора Эльбрус</h2>
               <!-- Для активации лайка добавлен модификатор card__like_status_active -->
@@ -66,6 +68,7 @@
               src="./images/cards/dombai.png"
               alt="Верхушки осеннего леса на фоне скальника в Домбае."
             />
+            <button type="button" name="mini-bin" class="card__mini-bin"></button>
             <div class="card__bottom">
               <h2 class="card__caption">Домбай</h2>
               <button type="button" name="like" class="card__like"></button>
@@ -77,6 +80,7 @@
               src="./images/cards/arhyz.jpg"
               alt="Выложенное поленьями имя села Архыз вдоль туристической тропы."
             />
+            <button type="button" name="mini-bin" class="card__mini-bin"></button>
             <div class="card__bottom">
               <h2 class="card__caption">Архыз</h2>
               <button type="button" name="like" class="card__like"></button>
@@ -88,6 +92,7 @@
               src="./images/cards/vodopad.jpg"
               alt="Зеленый луг на фоне Софийских водопадов."
             />
+            <button type="button" name="mini-bin" class="card__mini-bin"></button>
             <div class="card__bottom">
               <h2 class="card__caption">Софийские водопады</h2>
               <button type="button" name="like" class="card__like"></button>
@@ -99,6 +104,7 @@
               src="./images/cards/teberda.jpg"
               alt="Отель у подножья горы в Теберде."
             />
+            <button type="button" name="mini-bin" class="card__mini-bin"></button>
             <div class="card__bottom">
               <h2 class="card__caption">Теберда</h2>
               <!-- Для активации лайка добавлен модификатор card__like_status_active -->
@@ -131,6 +137,30 @@
           />
           <button class="popup__button" type="submit" name="save_profile">
             Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup-add-card">
+      <!--popup_opened-->
+      <div class="popup__body">
+        <button type="button" name="button_close" class="popup__close"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="form_edit-profile">
+          <input
+            class="popup__input"
+            type="text"
+            name="name-card"
+            placeholder="Название"
+          />
+          <input
+            class="popup__input"
+            type="text"
+            name="link-img"
+            placeholder="Ссылка на картинку"
+          />
+          <button class="popup__button" type="submit" name="save_profile">
+            Создать
           </button>
         </form>
       </div>

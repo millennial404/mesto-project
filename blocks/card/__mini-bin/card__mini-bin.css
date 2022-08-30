@@ -1,0 +1,15 @@
+.card__mini-bin {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: url(/images/cards/Trash.svg);
+  width: 18px;
+  height: 19px;
+  border: 0;
+  outline: none;
+
+}
+.card__mini-bin:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
