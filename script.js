@@ -43,3 +43,67 @@ function addCardButtonOnOff() {
 add_button_card.addEventListener('click', addCardButtonOnOff);
 popup_add_card_close.addEventListener('click', addCardButtonOnOff);
 popup_add_card.querySelector('.popup__form').addEventListener('submit', (evt) => evt.preventDefault());
+// ----------------------------------------------------------------------------------------------------------
+//Добавление карточки
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+  ];
+
+const cardsContainer = document.querySelector('.cards');
+function addCard(nameValue, linkValue) {
+  const cardElement = document.createElement('li');
+  cardElement.classList.add('card');
+
+  const cardImageElement = document.createElement('img');
+  cardImageElement.classList.add('card__image');
+  cardImageElement.setAttribute('src', linkValue);
+
+  const cardBinElement = document.createElement('button');
+  cardBinElement.classList.add('card__mini-bin');
+  cardBinElement.setAttribute('type', 'button');
+
+  const cardBottomElement = document.createElement('div');
+  cardBottomElement.classList.add('card__bottom');
+
+  const cardNameElement = document.createElement('h2');
+  cardNameElement.classList.add('card__caption');
+  cardNameElement.textContent = nameValue;
+
+  const cardLikeElement = document.createElement('button');
+  cardLikeElement.classList.add('card__like');
+  cardLikeElement.setAttribute('type', 'button');
+
+  cardBottomElement.append(cardNameElement, cardLikeElement);
+  cardElement.append(cardImageElement, cardBinElement, cardBottomElement);
+  cardsContainer.prepend(cardElement);
+
+  cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like_status_active');
+  });
+}
+
+initialCards.forEach((elem) => addCard(elem.name, elem.link));
