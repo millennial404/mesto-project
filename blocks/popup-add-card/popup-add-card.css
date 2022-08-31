@@ -1,5 +1,7 @@
 .popup-add-card {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
   align-items: center;
   justify-content: center;
   position: fixed;

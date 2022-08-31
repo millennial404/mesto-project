@@ -70,23 +70,23 @@
     <!-- POPUP Добавления карточки >> для включения добавть модификатор в блок popup-add-card-->
     <div class="popup-add-card">
       <!--popup_opened-->
-      <div class="popup__body">
-        <button type="button" name="button_close" class="popup__close"></button>
-        <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="form_edit-profile">
+      <div class="popup-add-card__body">
+        <button type="button" name="button_close" class="popup-add-card__close"></button>
+        <h3 class="popup-add-card__title">Новое место</h3>
+        <form class="popup-add-card__form" name="form_edit-profile">
           <input
-            class="popup__input"
+            class="popup-add-card__input"
             type="text"
             name="name-card"
             placeholder="Название"
           />
           <input
-            class="popup__input"
+            class="popup-add-card__input"
             type="text"
             name="link-img"
             placeholder="Ссылка на картинку"
           />
-          <button class="popup__button" type="submit" name="save_profile">
+          <button class="popup-add-card__button" type="submit" name="save_profile">
             Создать
           </button>
         </form>
@@ -95,10 +95,11 @@
     <!-- POPUP Открытия картинки >> для включения добавть модификатор в блок popup-image-->
     <div class="popup-image">
       <!--popup_opened-->
-      <div class="popup__body">
-        <button type="button" name="button_close" class="popup__close"></button>
-        <img src="" alt="">
-      </div>
+      <figure class="popup-image__body">
+        <button type="button" name="button_close" class="popup-image__close"></button>
+        <img src="" alt="" class="popup-image__img">
+        <figcaption class="popup-image__caption">Картинка</figcaption>
+      </figure>
     <script src="./script.js"></script>
   </body>
 </html>
