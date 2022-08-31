@@ -31,20 +31,8 @@ document.querySelector('.popup__form').addEventListener('submit', (evt) => evt.p
 // Сохраняем данные из формы при нажатии кнопки Сохранить
 popup_button_save.addEventListener('click', saveProfile);
 
-
 // ----------------------------------------------------------------------------------------------------------
-// Карточкин POPUP
-const popup_add_card = document.querySelector('.popup-add-card');
-const add_button_card = document.querySelector('.profile__add-button');
-const popup_add_card_close = popup_add_card.querySelector('.popup__close');
-function addCardButtonOnOff() {
-  popup_add_card.classList.toggle('popup_opened');
-}
-add_button_card.addEventListener('click', addCardButtonOnOff);
-popup_add_card_close.addEventListener('click', addCardButtonOnOff);
-popup_add_card.querySelector('.popup__form').addEventListener('submit', (evt) => evt.preventDefault());
-// ----------------------------------------------------------------------------------------------------------
-//Добавление карточки
+//Добавление карточек по умолчанию
 
 const initialCards = [
   {
@@ -72,6 +60,11 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
   ];
+
+  const imgTemplate = document.querySelector('.popup-image');
+  function popup_image() {
+    imgTemplate.classList.toggle('popup_opened');
+  }
 
 const cardsContainer = document.querySelector('.cards');
 function addCard(nameValue, linkValue) {
@@ -104,6 +97,49 @@ function addCard(nameValue, linkValue) {
   cardElement.querySelector('.card__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__like_status_active');
   });
+
+  const deleteButton = cardElement.querySelector('.card__mini-bin');
+
+  deleteButton.addEventListener('click', function () {
+    const listItem = deleteButton.closest('.card');
+    listItem.remove();
+  });
+  
+  cardElement.addEventListener('click', popup_image());
+
 }
 
 initialCards.forEach((elem) => addCard(elem.name, elem.link));
+
+// ----------------------------------------------------------------------------------------------------------
+// Карточкин POPUP
+const popup_add_card = document.querySelector('.popup-add-card');
+const add_button_card = document.querySelector('.profile__add-button');
+const popup_add_card_close = popup_add_card.querySelector('.popup__close');
+const card_name = document.querySelector('[name="name-card"]');
+const card_img_link = document.querySelector('[name="link-img"]');
+const createButton = popup_add_card.querySelector('.popup__button');
+
+function addCardButtonOnOff() {
+  popup_add_card.classList.toggle('popup_opened');
+}
+
+function createCard() {
+  if (card_name.value === '' && card_name.value === ''){
+    addCardButtonOnOff();
+  }
+  else{
+  addCard(card_name.value, card_img_link.value)
+  card_name.value = '';
+  card_img_link.value= '';
+  addCardButtonOnOff();
+  }
+}
+
+add_button_card.addEventListener('click', addCardButtonOnOff);
+popup_add_card_close.addEventListener('click', addCardButtonOnOff);
+createButton.addEventListener('click', createCard)
+popup_add_card.querySelector('.popup__form').addEventListener('submit', (evt) => evt.preventDefault());
+
+// ----------------------------------------------------------------------------------------------------------
+// Открытие картинки

@@ -37,3 +37,8 @@
 @import "../blocks/popup-add-card/__button/popup__button.css";
 @import "../blocks/popup-add-card/__close/popup__close.css";
 @import "../blocks/popup-add-card/_opened/popup_opened.css";
+@import "../blocks/popup-image/popup-image.css";
+@import "../blocks/popup-image/__body/popup__body.css";
+@import "../blocks/popup-image/__button/popup__button.css";
+@import "../blocks/popup-image/__close/popup__close.css";
+@import "../blocks/popup-image/_opened/popup_opened.css";
