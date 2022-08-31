@@ -1,8 +1,8 @@
 .card__mini-bin {
+  background: url(../../../../images/cards/bin.svg);
   position: absolute;
   right: 20px;
   top: 20px;
-  background: url(/images/cards/Trash.svg);
   width: 18px;
   height: 19px;
   border: 0;
