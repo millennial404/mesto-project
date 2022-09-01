@@ -28,15 +28,37 @@
         <div class="profile__info">
           <div class="profile__about-myself">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" name="edit_profile" class="profile__edit-button"></button>
+            <button
+              type="button"
+              name="edit_profile"
+              class="profile__edit-button"
+            ></button>
           </div>
           <p class="profile__profession">Исследователь океана</p>
         </div>
-        <button type="button" name="add_photo" class="profile__add-button"></button>
+        <button
+          type="button"
+          name="add_photo"
+          class="profile__add-button"
+        ></button>
       </section>
       <!-- ФОТОКАРТОЧКИ -->
       <section aria-label="Карточки мест">
         <ul class="cards">
+          <template id="card">
+            <li class="card">
+              <img class="card__image" src="" alt="" />
+              <button
+                type="button"
+                name="mini-bin"
+                class="card__mini-bin"
+              ></button>
+              <div class="card__bottom">
+                <h2 class="card__caption"></h2>
+                <button type="button" name="like" class="card__like"></button>
+              </div>
+            </li>
+          </template>
         </ul>
       </section>
     </main>
@@ -44,36 +66,34 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <!-- POPUP РЕДАКТИРОВАНИЕ ПРОФИЛЯ >> для включения добавть модификатор в блок popup-->
+    <!-- POPUP РЕДАКТИРОВАНИЕ ПРОФИЛЯ >> -->
     <div class="popup popup_edit-profile">
-      <!--popup_opened-->
       <div class="popup__body">
-        <button type="button" name="button_close" class="popup__close"></button>
+        <button
+          type="button"
+          name="button_close-edit-profile"
+          class="popup__close"
+        ></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="form_edit-profile">
-          <input
-            class="popup__input"
-            type="text"
-            name="name"
-          />
-          <input
-            class="popup__input"
-            type="text"
-            name="profession"
-          />
+        <form class="popup__form" name="popup-form-edit-profile">
+          <input class="popup__input" type="text" name="name" />
+          <input class="popup__input" type="text" name="profession" />
           <button class="popup__button" type="submit" name="save_profile">
             Сохранить
           </button>
         </form>
       </div>
     </div>
-    <!-- POPUP Добавления карточки >> для включения добавть модификатор в блок popup-add-card-->
+    <!-- POPUP Добавления карточки >> -->
     <div class="popup popup_add-card">
-      <!--popup_opened-->
       <div class="popup__body">
-        <button type="button" name="button_close" class="popup__close"></button>
+        <button
+          type="button"
+          name="button_close-popup_add-card"
+          class="popup__close"
+        ></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="form_edit-profile">
+        <form class="popup__form" name="popup__form-addCard">
           <input
             class="popup__input"
             type="text"
@@ -86,20 +106,25 @@
             name="link-img"
             placeholder="Ссылка на картинку"
           />
-          <button class="popup__button" type="submit" name="add_card>
+          <button class="popup__button" type="submit" name="add_card">
             Создать
           </button>
         </form>
       </div>
     </div>
-    <!-- POPUP Открытия картинки >> для включения добавть модификатор в блок popup-image-->
+    <!-- POPUP Открытия картинки >>-->
     <div class="popup popup_image">
-      <!--popup_opened-->
-      <figure class="popup__body">
-        <button type="button" name="button_close" class="popup__close"></button>
-        <img src="" alt="" class="popup__img">
-        <figcaption class="popup__caption">Картинка</figcaption>
+      <figure class="popup__figure">
+        <button
+          type="button"
+          name="button_close-image"
+          class="popup__close"
+        ></button>
+        <img src="" alt="" class="popup__img" />
+        <figcaption class="popup__img-caption"></figcaption>
       </figure>
-    <script src="./script.js"></script>
+    </div>
+    <script src="./script/cards.js"></script>
+    <script src="./script/script.js"></script>
   </body>
 </html>
