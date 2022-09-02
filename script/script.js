@@ -10,8 +10,8 @@ const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddCardPopup = document.querySelector('.profile__add-button');
 
 //Значения имени и профессии на странице
-let nameProfile = document.querySelector('.profile__name');
-let professionProfile = document.querySelector('.profile__profession');
+const nameProfile = document.querySelector('.profile__name');
+const professionProfile = document.querySelector('.profile__profession');
 
 // Форма и поля ввода Имени и профессии
 const formPopupProfile = document.querySelector('[name="popup-form-edit-profile"]');
@@ -48,12 +48,20 @@ function closePopup(popup) {
 }
 // -------------------------------------------------------------------
 // Вставляем имя и профессию в форму для редактирования
-formInputName.value = nameProfile.textContent;
-formInputProfession.value = professionProfile.textContent;
+function openPropfilePopup() { 
+  formInputName.value = nameProfile.textContent;
+  formInputProfession.value = professionProfile.textContent; //заполняем поля формы 
+  openPopup(profilePopup) //вызываем функцию для открытия попапа 
+  } 
 
+// Функция открытия POPUPa добавления карточки очистка полей формы
+function openAddCardPopup() {
+  formAddCardPopup.reset();
+  openPopup(cardPopup);
+}
 
 // Слушаем события  кнопок редактирования профиля и закрытия окна попапа
-buttonEditProfile.addEventListener('click', () => {openPopup(profilePopup)});
+buttonEditProfile.addEventListener('click', openPropfilePopup);
 buttonCloseProfilePopup.addEventListener('click', () => {closePopup(profilePopup)});
 
 // Функция сохранения имени и профессии из формы в профиль
@@ -62,16 +70,16 @@ function saveProfile() {
   professionProfile.textContent = formInputProfession.value;
 }
 // Сохраняем данные из формы при нажатии кнопки Сохранить
-formPopupProfile.addEventListener('submit', (evt) => {evt.preventDefault(); saveProfile(); closePopup(profilePopup)});
+formPopupProfile.addEventListener('submit', (evt) => {
+  evt.preventDefault(); 
+  saveProfile(); 
+  closePopup(profilePopup)
+});
 
 // ----------------------------------------------------------------------------------------------------------
 //Слушаем кнопки открытия и закрытия POPAPa добавления карточки
-buttonAddCardPopup.addEventListener('click', () => {openPopup(cardPopup)});
-buttonCloseAddCardPopup.addEventListener('click', () => {
-  closePopup(cardPopup);
-  nameCardPopup.value = '';
-  linkImgCardPopup.value = '';
-});
+buttonAddCardPopup.addEventListener('click', openAddCardPopup);
+buttonCloseAddCardPopup.addEventListener('click', () => {closePopup(cardPopup)});
 
 // ----------------------------------------------------------------------------------------------------------
 //Функция создания карточки
@@ -97,7 +105,7 @@ function createCard(nameValue, linkValue) {
 
   cardImage.addEventListener('click', () => {
     openPopup(imagePopup);
-    imagePopup.querySelector('.popup__img').setAttribute('src', cardImage.src);
+    imagePopup.querySelector('.popup__img').setAttribute('src', linkValue);
     imagePopup.querySelector('.popup__img').setAttribute('alt', nameValue);
     imagePopup.querySelector('.popup__img-caption').textContent = nameValue;
   });
