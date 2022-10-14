@@ -112,8 +112,14 @@ function createCard(nameValue, linkValue) {
   return cardElement;
 }
 
-// Слушаем (крестик) POPUPа с изображением
+// Слушаем (крестик) POPUPа с изображением и фон PopUpa
 buttonCloseImagePopup.addEventListener('click', ()=> {closePopup(imagePopup);});
+
+imagePopup.addEventListener('click', (evt)=> {
+  if(evt.target.classList.contains('popup_image')) {
+    closePopup(imagePopup);
+  }
+});
 
 // ----------------------------------------------------------------------------------------------------------
 //Функция добавления карточки на страницу
