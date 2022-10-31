@@ -1,0 +1,8 @@
+.popup__img {
+  max-width: 75vw;
+  max-height: 75vh;
+  margin-bottom: 10px;
+}
+.popup__img:hover {
+  cursor: default;
+}

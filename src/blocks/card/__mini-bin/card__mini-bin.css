@@ -1,5 +1,5 @@
 .card__mini-bin {
-  background: url(../../../../images/cards/bin.svg);
+  background: url('../../../images/cards/bin.svg');
   position: absolute;
   right: 20px;
   top: 20px;
