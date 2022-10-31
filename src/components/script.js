@@ -48,11 +48,11 @@ function closePopup(popup) {
 }
 // -------------------------------------------------------------------
 // Вставляем имя и профессию в форму для редактирования
-function openPropfilePopup() { 
+function openPropfilePopup() {
   formInputName.value = nameProfile.textContent;
-  formInputProfession.value = professionProfile.textContent; //заполняем поля формы 
-  openPopup(profilePopup) //вызываем функцию для открытия попапа 
-  } 
+  formInputProfession.value = professionProfile.textContent; //заполняем поля формы
+  openPopup(profilePopup) //вызываем функцию для открытия попапа
+  }
 
 // Функция открытия POPUPa добавления карточки очистка полей формы
 function openAddCardPopup() {
@@ -71,8 +71,8 @@ function saveProfile() {
 }
 // Сохраняем данные из формы при нажатии кнопки Сохранить
 formPopupProfile.addEventListener('submit', (evt) => {
-  evt.preventDefault(); 
-  saveProfile(); 
+  evt.preventDefault();
+  saveProfile();
   closePopup(profilePopup)
 });
 
