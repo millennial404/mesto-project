@@ -126,9 +126,10 @@ arrPopup.forEach((el) => {
   })
 });
 
-  document.addEventListener('keydown',(evt) => {
-    if (evt.key === 'Escape') {
-      closePopup(imagePopup);
+document.addEventListener('keydown',(evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector(".popup_opened");
+    openedPopup.classList.remove("popup_opened");
     }
 });
 
