@@ -1,5 +1,7 @@
+import {initialCards} from './cards.js';
 // Переменные
 // POPUPS-------------------------------------------------------------
+const arrPopup = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('.popup_edit-profile');
 const cardPopup = document.querySelector('.popup_add-card');
 const imagePopup = document.querySelector('.popup_image');
@@ -115,10 +117,19 @@ function createCard(nameValue, linkValue) {
 // Слушаем (крестик) POPUPа с изображением и фон PopUpa
 buttonCloseImagePopup.addEventListener('click', ()=> {closePopup(imagePopup);});
 
-imagePopup.addEventListener('click', (evt)=> {
-  if(evt.target.classList.contains('popup_image')) {
-    closePopup(imagePopup);
-  }
+
+arrPopup.forEach((el) => {
+  el.addEventListener('click', (evt)=> {
+    if(evt.target.classList.contains('popup')) {
+      closePopup(el);
+    }
+  })
+});
+
+  document.addEventListener('keydown',(evt) => {
+    if (evt.key === 'Escape') {
+      closePopup(imagePopup);
+    }
 });
 
 // ----------------------------------------------------------------------------------------------------------
