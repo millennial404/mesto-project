@@ -74,9 +74,11 @@
           class="popup__close"
         ></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="popup-form-edit-profile">
-          <input class="popup__input" type="text" name="name" />
-          <input class="popup__input" type="text" name="profession" />
+        <form class="popup__form" name="popup-form-edit-profile" novalidate>
+          <input id = "name-input" class="popup__input" type="email" name="name" minlength = "2" maxlength="40"/>
+          <span class="name-input--error popup__input-error"></span>
+          <input id = "profession-input" class="popup__input" type="text" name="profession" minlength = "2" maxlength="200"/>
+          <span class="profession-input--error popup__input-error"></span>          
           <button class="popup__button" type="submit" name="save_profile">
             Сохранить
           </button>
@@ -94,17 +96,21 @@
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="popup__form-addCard">
           <input
+            id = "name-card-input"
             class="popup__input"
             type="text"
             name="name-card"
             placeholder="Название"
           />
+          <span class="name-card-input--error popup__input-error"></span>
           <input
+            id = "link-img-input"
             class="popup__input"
-            type="text"
+            type="url"
             name="link-img"
             placeholder="Ссылка на картинку"
           />
+          <span class="link-img-input--error popup__input-error"></span>
           <button class="popup__button" type="submit" name="add_card">
             Создать
           </button>
