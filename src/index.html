@@ -75,10 +75,30 @@
         ></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="popup-form-edit-profile" novalidate>
-          <input id = "name-input" class="popup__input" type="email" name="name" minlength = "2" maxlength="40"/>
+          <input
+            id="name-input"
+            class="popup__input"
+            type="text"
+            pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+            name="name"
+            minlength="2"
+            maxlength="40"
+            required
+          />
           <span class="name-input--error popup__input-error"></span>
-          <input id = "profession-input" class="popup__input" type="text" name="profession" minlength = "2" maxlength="200"/>
-          <span class="profession-input--error popup__input-error"></span>          
+          <input
+            id="profession-input"
+            class="popup__input"
+            type="text"
+            pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+            name="profession"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="profession-input--error popup__input-error"></span>
           <button class="popup__button" type="submit" name="save_profile">
             Сохранить
           </button>
@@ -96,15 +116,19 @@
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="popup__form-addCard">
           <input
-            id = "name-card-input"
+            id="name-card-input"
             class="popup__input"
             type="text"
             name="name-card"
             placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            pattern="^[a-zA-Zа-яА-Я\s\-]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
           />
           <span class="name-card-input--error popup__input-error"></span>
           <input
-            id = "link-img-input"
+            id="link-img-input"
             class="popup__input"
             type="url"
             name="link-img"
