@@ -1,6 +1,7 @@
-
+import { openPopup } from "./modal";
 const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
+const imagePopup = document.querySelector('.popup_image');
 
 //Функция создания карточки
 function createCard(nameValue, linkValue) {
