@@ -65,4 +65,4 @@ const enableValidation = (selectors) => {
   });
 };
 
-export {enableValidation}
+export {enableValidation, toggleButtonState}

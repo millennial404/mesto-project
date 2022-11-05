@@ -2,6 +2,14 @@ import { openPopup } from "./modal";
 const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
 const imagePopup = document.querySelector('.popup_image');
+const image = imagePopup.querySelector('.popup__img');
+function deleteCard (cardID) {
+  const listItem = cardID.closest('.card');
+  listItem.remove();
+}
+function likeCard (cardID) {
+  cardID.target.classList.toggle('card__like_status_active');
+}
 
 //Функция создания карточки
 function createCard(nameValue, linkValue) {
@@ -15,19 +23,14 @@ function createCard(nameValue, linkValue) {
   cardImage.alt = nameValue;
   cardCaption.textContent = nameValue;
 
-  cardLike.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('card__like_status_active');
-  });
+  cardLike.addEventListener('click', (evt) => likeCard(evt));
 
-  cardDelete.addEventListener('click', () => {
-    const listItem = cardDelete.closest('.card');
-    listItem.remove();
-  });
+  cardDelete.addEventListener('click', () => deleteCard(cardDelete));
 
   cardImage.addEventListener('click', () => {
     openPopup(imagePopup);
-    imagePopup.querySelector('.popup__img').setAttribute('src', linkValue);
-    imagePopup.querySelector('.popup__img').setAttribute('alt', nameValue);
+    image.setAttribute('src', linkValue);
+    image.setAttribute('alt', nameValue);
     imagePopup.querySelector('.popup__img-caption').textContent = nameValue;
   });
   return cardElement;
