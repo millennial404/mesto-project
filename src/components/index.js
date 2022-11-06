@@ -1,8 +1,9 @@
 import '../pages/index.css'; // импорт главного файла стилей
-import { initialCards } from './cards.js'; //данные для инициализации первых карточек
 import {renderCard } from "./card.js";
 import {closePopup, openPopup} from "./modal.js";
 import {enableValidation, toggleButtonState} from "./validate.js";
+import {getInitialCards, getProfileData, patchDataProfile, addNewCard, deleteCard} from "./api.js";
+import { data } from 'autoprefixer';
 
 // Переменные
 const arrPopup = document.querySelectorAll('.popup');
@@ -23,6 +24,17 @@ const professionProfile = document.querySelector('.profile__profession');
 const formInputName = document.querySelector('[name="name"]');
 const formInputProfession = document.querySelector('[name="profession"]');
 const buttonSubmitCard = document.querySelector('[name="add_card"]');
+const avaProfile = document.querySelector('.profile__avatar');
+let idProfile = '';
+
+//Получили данные профиля с сервера
+getProfileData()
+  .then((data) => {
+    nameProfile.textContent = data.name;
+    professionProfile.textContent = data.about;
+    avaProfile.src = data.avatar;
+    idProfile = data._id;
+  });
 
 // Функция заполнения полей формы редактирования профиля данными установленными в данный момент
 function openPropfilePopup() {
@@ -33,6 +45,7 @@ function openPropfilePopup() {
 
 // Функция сохранения имени и профессии из формы в профиль
 function saveProfile() {
+  patchDataProfile(formInputName.value, formInputProfession.value);
   nameProfile.textContent = formInputName.value;
   professionProfile.textContent = formInputProfession.value;
 }
@@ -72,12 +85,18 @@ arrPopup.forEach((el) => {
   })
 });
 
-//Инициализация первых карточек
-initialCards.forEach((elem) => renderCard(elem.name, elem.link));
+//Инициализация карточек
+getInitialCards()
+  .then((data) => {
+    data.reverse().forEach((el) => {
+      renderCard(el.name, el.link, el.owner._id, idProfile, el._id, el.likes.length)
+    });
+  });
 
-//Добавление новой карточки при нажатии
+//Добавление новой карточки при нажатии Сохранить
 formAddCardPopup.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  addNewCard(nameCardPopup.value, linkImgCardPopup.value);
   renderCard(nameCardPopup.value, linkImgCardPopup.value);
   formAddCardPopup.reset();
   closePopup(cardPopup);
@@ -92,7 +111,3 @@ enableValidation({
   errorClass: 'popup__input-error_active'
 }
 );
-
-
-
-

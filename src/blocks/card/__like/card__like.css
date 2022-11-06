@@ -4,6 +4,7 @@
   height: 19px;
   outline: none;
   border: 0;
+  margin-bottom: 3px;
 }
 .card__like:hover {
   opacity: 0.5;
