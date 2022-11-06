@@ -81,8 +81,6 @@ formAddCardPopup.addEventListener('submit', (evt) => {
   renderCard(nameCardPopup.value, linkImgCardPopup.value);
   formAddCardPopup.reset();
   closePopup(cardPopup);
-  buttonSubmitCard.disabled = true;
-  buttonSubmitCard.classList.add('popup__button_inactive');
 });
 
 enableValidation({

@@ -3,12 +3,13 @@ const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
 const imagePopup = document.querySelector('.popup_image');
 const image = imagePopup.querySelector('.popup__img');
+
 function deleteCard (cardID) {
   const listItem = cardID.closest('.card');
   listItem.remove();
 }
-function likeCard (cardID) {
-  cardID.target.classList.toggle('card__like_status_active');
+function likeCard (evt) {
+  evt.target.classList.toggle('card__like_status_active');
 }
 
 //Функция создания карточки
