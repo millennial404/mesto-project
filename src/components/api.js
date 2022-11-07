@@ -68,32 +68,34 @@ export const deleteCardServer = (cardId) => {
 
 //Лайк карточки
 export const likeCardServer = (cardId) => {
-  fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'PUT',
     headers: config.headers,
-  })
-};
-
-//Проверка постановки лайка
-export const LikeCardServer = (cardId) => {
-  return fetch(`${config.baseUrl}/cards`, {
-    headers: config.headers
   })
     .then(res => {
       if (res.ok) {
         return res.json();
-      }})
-    .then((res) => {
-      res.array.forEach(element => {
-        element
-      });
-      });
-    };
-    
-  //Удалить лайк карточки
-  export const deleteLikeCardServer = (cardId) => {
-    fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-      method: 'DELETE',
-      headers: config.headers,
+      }
     })
-  };
+}
+
+//Проверка постановки лайка
+export const onLike = (likes, idProfile) => {
+  let likeStatus = false;
+  if (likes) {
+    likes.forEach(element => {
+      if (element._id === idProfile) {
+        likeStatus = true;
+      };
+    });
+  }
+  return likeStatus;
+};
+
+//Удалить лайк карточки
+export const deleteLikeCardServer = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers,
+  })
+};

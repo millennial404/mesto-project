@@ -89,7 +89,7 @@ arrPopup.forEach((el) => {
 getInitialCards()
   .then((data) => {
     data.reverse().forEach((el) => {
-      renderCard(el.name, el.link, el.owner._id, idProfile, el._id, el.likes.length)
+      renderCard(el.name, el.link, el.owner._id, idProfile, el._id, el.likes.length, el.likes)
     });
   });
 
