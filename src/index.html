@@ -19,7 +19,14 @@
     <main>
       <!-- PROFILE -->
       <section class="profile">
-        <img src="" alt="Аватар" class="profile__avatar" />
+        <div class="profile__avatat-container">
+          <button
+            type="button"
+            name="updateAvaButton"
+            class="profile__updateAvaButton"
+          ></button>
+          <img src="" alt="Аватар" class="profile__avatar" />
+        </div>
         <div class="profile__info">
           <div class="profile__about-myself">
             <h1 class="profile__name"></h1>
@@ -146,7 +153,7 @@
         </form>
       </div>
     </div>
-    <!-- POPUP Открытия картинки >>-->
+    <!-- POPUP Открытия картинки-->
     <div class="popup popup_image">
       <figure class="popup__figure">
         <button
@@ -157,6 +164,32 @@
         <img src="" alt="" class="popup__img" />
         <figcaption class="popup__img-caption"></figcaption>
       </figure>
+    </div>
+    <!-- POPUP Открытия обновления автара-->
+    <div class="popup popup_updateAva">
+      <div class="popup__body">
+        <button
+          type="button"
+          name="button_close-popup"
+          class="popup__close"
+        ></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="popup__updateAva">
+          <input
+            id="link-img-input"
+            class="popup__input"
+            type="url"
+            name="link-img"
+            placeholder="Cсылка на новый аватар"
+            required
+
+          />
+          <span class="link-img-input--error popup__input-error"></span>
+          <button class="popup__button" type="submit" name="saveAvaButton">
+            Сохранить
+          </button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

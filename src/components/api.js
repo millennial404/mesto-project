@@ -36,7 +36,7 @@ export const getInitialCards = () => {
 };
 
 export const patchDataProfile = (name, about) => {
-  fetch(`${config.baseUrl}/users/me`, {
+  return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
     body: JSON.stringify({
@@ -44,17 +44,26 @@ export const patchDataProfile = (name, about) => {
       about: about
     })
   })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
 };
 
 //Добавление новой карточки
 export const addNewCard = (name, link) => {
-  fetch(`${config.baseUrl}/cards `, {
+  return fetch(`${config.baseUrl}/cards `, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify({
       name: name,
       link: link
     })
+  }).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
   })
 };
 
@@ -98,4 +107,25 @@ export const deleteLikeCardServer = (cardId) => {
     method: 'DELETE',
     headers: config.headers,
   })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+};
+
+//Обновление аватара
+export const updateAvaProfile = (linkAva) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: linkAva
+    })
+  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
 };

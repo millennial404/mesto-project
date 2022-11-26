@@ -1,5 +1,5 @@
 import { openPopup } from "./modal";
-import { deleteCardServer, likeCardServer, onLike } from "./api.js";
+import { deleteCardServer, likeCardServer, onLike, deleteLikeCardServer } from "./api.js";
 const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
 const imagePopup = document.querySelector('.popup_image');
@@ -13,12 +13,19 @@ function deleteCard(cardDelete, cardID) {
 }
 
 function likeCard(evt, cardID) {
-  evt.target.classList.add('card__like_status_active');
-  likeCardServer(cardID)
-    .then((res) => {
-        console.log(res);
+  if (!evt.target.classList.contains('card__like_status_active')) {
+    likeCardServer(cardID)
+      .then((res) => {
         evt.target.closest(".card").querySelector('.card__like-count').textContent = res.likes.length;
+        evt.target.classList.add('card__like_status_active');
       })
+  } else {
+    deleteLikeCardServer(cardID)
+      .then((res) => {
+        evt.target.closest(".card").querySelector('.card__like-count').textContent = res.likes.length;
+        evt.target.classList.remove('card__like_status_active');
+      })
+  }
 }
 
 //Функция создания карточки
