@@ -4,6 +4,7 @@ const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
 const imagePopup = document.querySelector('.popup_image');
 const image = imagePopup.querySelector('.popup__img');
+const imageCaption = imagePopup.querySelector('.popup__img-caption');
 const miniBinTemplate = document.querySelector('#mini-bin').content;
 
 function deleteCard(cardDelete, cardID) {
@@ -55,7 +56,7 @@ function createCard(nameValue, linkValue, ownerId, idProfile, idCard, countLikes
     openPopup(imagePopup);
     image.setAttribute('src', linkValue);
     image.setAttribute('alt', nameValue);
-    imagePopup.querySelector('.popup__img-caption').textContent = nameValue;
+    imageCaption.textContent = nameValue;
   });
   return cardElement;
 }

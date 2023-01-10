@@ -7,18 +7,22 @@ const config = {
   }
 };
 
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка ${res.status}`);
+}
+
 //Функция получения данных профиля
 export const getProfileData = () => {
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
+    })
 };
 
 //Функция получения карточек с сервера, возвращает JSON с массивом карточек, которые загрузили студенты нашей группы.
@@ -26,13 +30,10 @@ export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
+    })
 };
 
 export const patchDataProfile = (name, about) => {
@@ -44,10 +45,9 @@ export const patchDataProfile = (name, about) => {
       about: about
     })
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
     })
 };
 
@@ -60,11 +60,11 @@ export const addNewCard = (name, link) => {
       name: name,
       link: link
     })
-  }).then(res => {
-    if (res.ok) {
-      return res.json();
-    }
   })
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
+    })
 };
 
 //Удаление карточки
@@ -73,6 +73,10 @@ export const deleteCardServer = (cardId) => {
     method: 'DELETE',
     headers: config.headers,
   })
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
+    })
 };
 
 //Лайк карточки
@@ -81,12 +85,11 @@ export const likeCardServer = (cardId) => {
     method: 'PUT',
     headers: config.headers,
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
     })
-}
+};
 
 //Проверка постановки лайка
 export const onLike = (likes, idProfile) => {
@@ -107,10 +110,9 @@ export const deleteLikeCardServer = (cardId) => {
     method: 'DELETE',
     headers: config.headers,
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
     })
 };
 
@@ -123,9 +125,8 @@ export const updateAvaProfile = (linkAva) => {
       avatar: linkAva
     })
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
+    .then(checkResponse)
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
     })
 };
