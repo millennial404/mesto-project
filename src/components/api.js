@@ -21,7 +21,7 @@ export const getProfileData = () => {
   })
     .then(checkResponse)
     .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
+      console.log(err);
     })
 };
 
@@ -47,7 +47,7 @@ export const patchDataProfile = (name, about) => {
   })
     .then(checkResponse)
     .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
+      console.log(err);
     })
 };
 
@@ -63,19 +63,19 @@ export const addNewCard = (name, link) => {
   })
     .then(checkResponse)
     .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
+      console.log(err);
     })
 };
 
 //Удаление карточки
 export const deleteCardServer = (cardId) => {
-  fetch(`${config.baseUrl}/cards/${cardId}`, {
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
   })
     .then(checkResponse)
     .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
+      console.log(err);
     })
 };
 
@@ -127,6 +127,6 @@ export const updateAvaProfile = (linkAva) => {
   })
     .then(checkResponse)
     .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
+      console.log(err);
     })
 };

@@ -8,9 +8,12 @@ const imageCaption = imagePopup.querySelector('.popup__img-caption');
 const miniBinTemplate = document.querySelector('#mini-bin').content;
 
 function deleteCard(cardDelete, cardID) {
-  const listItem = cardDelete.closest('.card');
-  listItem.remove();
-  deleteCardServer(cardID)
+  deleteCardServer(cardID).then(() => {
+    cardDelete.closest('.card').remove();
+  })
+    .catch((err) => {
+      console.log(err);
+    })
 }
 
 function likeCard(evt, cardID) {
@@ -20,11 +23,17 @@ function likeCard(evt, cardID) {
         evt.target.closest(".card").querySelector('.card__like-count').textContent = res.likes.length;
         evt.target.classList.add('card__like_status_active');
       })
+      .catch((err) => {
+        console.log(err);
+      })
   } else {
     deleteLikeCardServer(cardID)
       .then((res) => {
         evt.target.closest(".card").querySelector('.card__like-count').textContent = res.likes.length;
         evt.target.classList.remove('card__like_status_active');
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 }

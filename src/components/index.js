@@ -28,14 +28,21 @@ const inputLinkAva = formAvaUpdate.querySelector('[name="link-img"]');
 const buttonSubmitAva = formAvaUpdate.querySelector('[name="saveAvaButton"]');
 let idProfile = '';
 
-//Получили данные профиля с сервера
-getProfileData()
-  .then((data) => {
-    nameProfile.textContent = data.name;
-    professionProfile.textContent = data.about;
-    avaProfile.src = data.avatar;
-    idProfile = data._id;
-  });
+Promise.all([getProfileData(), getInitialCards()])
+  .then(([userData, cards]) => {
+    // установка данных пользователя
+    nameProfile.textContent = userData.name;
+    professionProfile.textContent = userData.about;
+    avaProfile.src = userData.avatar;
+    idProfile = userData._id;
+    // отрисовка карточек
+    cards.reverse().forEach((el) => {
+      renderCard(el.name, el.link, el.owner._id, idProfile, el._id, el.likes.length, el.likes)
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 
 // Функция заполнения полей формы редактирования профиля данными установленными в данный момент
 function openPropfilePopup() {
@@ -73,8 +80,11 @@ formPopupProfile.addEventListener('submit', (evt) => {
       nameProfile.textContent = res.name;
       professionProfile.textContent = res.about;
     })
+    .then(() => {closePopup(profilePopup)})
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => renderLoading(false, evt))
-  closePopup(profilePopup)
 });
 
 //Слушаем кнопки открытия POPAPa добавления карточки
@@ -89,14 +99,6 @@ arrPopup.forEach((el) => {
   })
 });
 
-//Инициализация карточек
-getInitialCards()
-  .then((data) => {
-    data.reverse().forEach((el) => {
-      renderCard(el.name, el.link, el.owner._id, idProfile, el._id, el.likes.length, el.likes)
-    });
-  });
-
 //Добавление новой карточки при нажатии Сохранить
 formAddCardPopup.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -105,9 +107,12 @@ formAddCardPopup.addEventListener('submit', (evt) => {
     .then((res) => {
       renderCard(res.name, res.link, res.owner._id, res.owner._id, res._id, res.likes.length, res.likes);
     })
+    .then(() => {closePopup(cardPopup)})
+    .then(() => formAddCardPopup.reset())
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => renderLoading(false, evt))
-  formAddCardPopup.reset();
-  closePopup(cardPopup);
 });
 
 enableValidation({
@@ -127,9 +132,12 @@ formAvaUpdate.addEventListener('submit', (evt) => {
     .then((res) => {
       avaProfile.src = res.avatar;
     })
+    .then(()=>{closePopup(updateAvaProfilePopup)})
+    .then(()=>formAvaUpdate.reset())
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => renderLoading(false, evt))
-  formAvaUpdate.reset();
-  closePopup(updateAvaProfilePopup);
 });
 
 function renderLoading(isLoading, evt) {
