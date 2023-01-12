@@ -1,5 +1,5 @@
 import { openPopup } from "./modal";
-import { deleteCardServer, likeCardServer, onLike, deleteLikeCardServer } from "./api.js";
+import { deleteCardServer, likeCardServer, deleteLikeCardServer } from "./api.js";
 const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
 const imagePopup = document.querySelector('.popup_image');
@@ -37,6 +37,19 @@ function likeCard(evt, cardID) {
       })
   }
 }
+
+//Проверка постановки лайка
+export const onLike = (likes, idProfile) => {
+  let likeStatus = false;
+  if (likes) {
+    likes.forEach(element => {
+      if (element._id === idProfile) {
+        likeStatus = true;
+      };
+    });
+  }
+  return likeStatus;
+};
 
 //Функция создания карточки
 function createCard(nameValue, linkValue, ownerId, idProfile, idCard, countLikes, likes) {

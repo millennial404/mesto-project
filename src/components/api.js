@@ -20,9 +20,6 @@ export const getProfileData = () => {
     headers: config.headers
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err);
-    })
 };
 
 //Функция получения карточек с сервера, возвращает JSON с массивом карточек, которые загрузили студенты нашей группы.
@@ -31,9 +28,6 @@ export const getInitialCards = () => {
     headers: config.headers
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
-    })
 };
 
 export const patchDataProfile = (name, about) => {
@@ -46,9 +40,6 @@ export const patchDataProfile = (name, about) => {
     })
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err);
-    })
 };
 
 //Добавление новой карточки
@@ -62,9 +53,6 @@ export const addNewCard = (name, link) => {
     })
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err);
-    })
 };
 
 //Удаление карточки
@@ -74,9 +62,6 @@ export const deleteCardServer = (cardId) => {
     headers: config.headers,
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err);
-    })
 };
 
 //Лайк карточки
@@ -86,22 +71,6 @@ export const likeCardServer = (cardId) => {
     headers: config.headers,
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
-    })
-};
-
-//Проверка постановки лайка
-export const onLike = (likes, idProfile) => {
-  let likeStatus = false;
-  if (likes) {
-    likes.forEach(element => {
-      if (element._id === idProfile) {
-        likeStatus = true;
-      };
-    });
-  }
-  return likeStatus;
 };
 
 //Удалить лайк карточки
@@ -111,9 +80,6 @@ export const deleteLikeCardServer = (cardId) => {
     headers: config.headers,
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err); // выводим ошибку в консоль
-    })
 };
 
 //Обновление аватара
@@ -126,7 +92,4 @@ export const updateAvaProfile = (linkAva) => {
     })
   })
     .then(checkResponse)
-    .catch((err) => {
-      console.log(err);
-    })
 };
