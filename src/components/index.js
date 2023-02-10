@@ -132,10 +132,10 @@ avaFormValidate.enableValidation()
 
 
 // import '../pages/index.css'; // импорт главного файла стилей
-// import { renderCard } from "./card.js";
+// import { renderCard } from "./Card.js";
 // import { closePopup, openPopup } from "./modal.js";
 // import { enableValidation, toggleButtonState } from "./validate.js";
-// import { getInitialCards, getProfileData, patchDataProfile, addNewCard, updateAvaProfile } from "./api.js";
+// import { getInitialCards, getProfileData, patchDataProfile, addNewCard, updateAvaProfile } from "./Api.js";
 // import { data } from 'autoprefixer';
 
 // // Переменные
