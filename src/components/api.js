@@ -1,11 +1,66 @@
-//Данные с адресом сервера на который обращаемся и токен для авторизации
-const config = {
-  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-16',
-  headers: {
-    authorization: '8e484665-06f6-4a1a-8841-c5612a4870b1',
-    'Content-Type': 'application/json'
+export default class Api {
+  constructor(options) {
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
   }
-};
+
+  getInitialCards() {
+    return fetch(`${this.baseUrl}/cards`, {
+      headers: this.headers
+    })
+      .then(this._checkResponse)
+  }
+
+  getProfileData() {
+    return fetch(`${this.baseUrl}/users/me`, {
+      headers: this.headers
+    })
+      .then(this._checkResponse)
+  }
+
+  setProfileData(name, about) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    })
+      .then(this._checkResponse)
+  }
+
+  addCard(name, link) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: name,
+        link: link
+      })
+    })
+      .then(this._checkResponse)
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+  //Данные с адресом сервера на который обращаемся и токен для авторизации
+  const config = {
+    baseUrl: 'https://nomoreparties.co/v1/plus-cohort-16',
+    headers: {
+      authorization: '8e484665-06f6-4a1a-8841-c5612a4870b1',
+      'Content-Type': 'application/json'
+    }
+  };
 
 function checkResponse(res) {
   if (res.ok) {
