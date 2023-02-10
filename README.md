@@ -1,4 +1,4 @@
-# Проект: Путешествие по России
+# Проект: Проект Mesto на ООП
 
 ### Обзор
 * О проекте
@@ -14,7 +14,3 @@
 **Figma**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
-
-**Github-page**
-
-* [Ссылка на страницу в Github-pages](https://millennial404.github.io/mesto-project/)
