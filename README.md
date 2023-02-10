@@ -14,3 +14,12 @@
 **Figma**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+
+Исполнители:
+Захарченко Сергей
+Github: https://github.com/millennial404
+Email: millennial404@yandex.com
+
+Анна Петрова
+Github: https://github.com/Abrakadabra13
+Email: annapetrova13@ya.ru
