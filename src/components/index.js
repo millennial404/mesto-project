@@ -34,6 +34,65 @@ const sectionCards = new Section({
 
 sectionCards.renderItems();
 
+const userInfo = new UserInfo(
+  {
+    slectorNameUser: '.profile__name',
+    selectorAboutUser: '.profile__profession',
+    selectorAvatarUser: '.profile__avatar'
+  });
+
+userInfo.getUserInfo(() => api.getProfileData())
+
+const editProfile = new PopupWithForm('.popup_edit-profile', (data) => {
+  api.setProfileData(data.name, data.profession)
+    .then((res) => userInfo.setUserInfo(res))
+    .then(() => editProfile.close())
+    .catch((err) => { console.log(err) })
+    .finally(() => editProfile.renderLoading(false))
+
+});
+editProfile.setEventListeners();
+
+const addCardPopup = new PopupWithForm('.popup_add-card', (data) => {
+  Promise.all([api.addCard(data.name_card, data.link_img), api.getProfileData()])
+    .then(([item, userData]) => {
+      const card = new Card(item, userData._id, '#card', {
+        likeCard: (cardID) => api.likeCard(cardID),
+        deletelikeCard: (cardID) => api.deletelikeCard(cardID),
+        deleteCard: (cardID) => api.deleteCard(cardID),
+        handleCardClick: (linkValue, nameValue) => imagePopup.open(linkValue, nameValue)
+      });
+      const cardElement = card.generate();
+      sectionCards.addItemfirst(cardElement);
+    })
+    .then(() => addCardPopup.close())
+    .catch((err) => { console.log(err) })
+    .finally(() => addCardPopup.renderLoading(false))
+})
+addCardPopup.setEventListeners();
+
+const imagePopup = new PopupWithImage('.popup_image');
+imagePopup.setEventListeners();
+
+const avaUpdatePopup = new PopupWithForm('.popup_updateAva', (data) => {
+  api.updateAvatar(data.link_img)
+    .then((res) => {
+      userInfo.setUserInfo(res)
+    })
+    .then(() => avaUpdatePopup.close())
+    .catch((err) => { console.log(err) })
+    .finally(() => avaUpdatePopup.renderLoading(false))
+
+});
+avaUpdatePopup.setEventListeners();
+
+buttonEditProfile.addEventListener('click', () => {
+  editProfile.open()
+
+})
+buttonAddCardPopup.addEventListener('click', () => addCardPopup.open())
+buttonAvaUpdate.addEventListener('click', () => avaUpdatePopup.open())
+
 
 
 
