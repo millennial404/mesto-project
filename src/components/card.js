@@ -1,7 +1,6 @@
 export default class Card {
   constructor(data, idProfile, templateSelector, callBackFunction) {
-    const { likeCard, deletelikeCard, deleteCard, handleCardClick } =
-      callBackFunction;
+    const { likeCard, deletelikeCard, deleteCard, handleCardClick } = callBackFunction;
     this._likeCard = likeCard;
     this._deletelikeCard = deletelikeCard;
     this._deleteCard = deleteCard;
@@ -22,8 +21,7 @@ export default class Card {
     this.image.src = this.link;
     this.image.alt = this.name;
     this._element.querySelector(".card__caption").textContent = this.name;
-    this._element.querySelector(".card__like-count").textContent =
-      this.countLikes;
+    this._element.querySelector(".card__like-count").textContent = this.countLikes;
     this._like = this._element.querySelector(".card__like");
     this._bin = document
       .querySelector("#mini-bin")

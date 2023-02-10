@@ -5,6 +5,8 @@ import Api from "./Api.js";
 import UserInfo from './Userinfo';
 import PopupWithImage from './PopupWithiImage';
 import PopupWithForm from './PopupWithForm';
+import FormValidator from './FormValidator';
+
 
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddCardPopup = document.querySelector('.profile__add-button');
@@ -51,6 +53,7 @@ const editProfile = new PopupWithForm('.popup_edit-profile', (data) => {
     .finally(() => editProfile.renderLoading(false))
 
 });
+
 editProfile.setEventListeners();
 
 const addCardPopup = new PopupWithForm('.popup_add-card', (data) => {
@@ -69,6 +72,7 @@ const addCardPopup = new PopupWithForm('.popup_add-card', (data) => {
     .catch((err) => { console.log(err) })
     .finally(() => addCardPopup.renderLoading(false))
 })
+
 addCardPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage('.popup_image');
@@ -84,17 +88,34 @@ const avaUpdatePopup = new PopupWithForm('.popup_updateAva', (data) => {
     .finally(() => avaUpdatePopup.renderLoading(false))
 
 });
+
 avaUpdatePopup.setEventListeners();
 
 buttonEditProfile.addEventListener('click', () => {
   editProfile.open()
 
 })
+
 buttonAddCardPopup.addEventListener('click', () => addCardPopup.open())
 buttonAvaUpdate.addEventListener('click', () => avaUpdatePopup.open())
 
+const settingsValidate = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
 
+const cardFormValidate = new FormValidator(settingsValidate, '[name="popup__form-addCard"]')
+cardFormValidate.enableValidation()
 
+const profileFormValidate = new FormValidator(settingsValidate, '[name="popup-form-edit-profile"]')
+profileFormValidate.enableValidation()
+
+const avaFormValidate = new FormValidator(settingsValidate, '.popup_updateAva')
+avaFormValidate.enableValidation()
 
 
 
