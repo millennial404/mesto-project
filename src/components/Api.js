@@ -5,21 +5,19 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
+    return this._request(`${this.baseUrl}/cards`, {
       headers: this.headers
     })
-      .then(this._checkResponse)
   }
 
   getProfileData() {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return this._request(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
-      .then(this._checkResponse)
   }
 
   setProfileData(name, about) {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return this._request(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
@@ -27,11 +25,10 @@ export default class Api {
         about: about
       })
     })
-      .then(this._checkResponse)
   }
 
   addCard(name, link) {
-    return fetch(`${this.baseUrl}/cards`, {
+    return this._request(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
@@ -39,42 +36,37 @@ export default class Api {
         link: link
       })
     })
-      .then(this._checkResponse)
   }
 
   deleteCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/${cardId}`, {
+    return this._request(`${this.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this.headers
     })
-      .then(this._checkResponse)
   }
 
   likeCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+    return this._request(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: 'PUT',
       headers: this.headers,
     })
-      .then(this._checkResponse)
-  };
+  }
 
   deletelikeCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+    return this._request(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: 'DELETE',
       headers: this.headers,
     })
-      .then(this._checkResponse)
-  };
+  }
 
   updateAvatar(linkAva) {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
+    return this._request(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
         avatar: linkAva
       })
     })
-      .then(this._checkResponse)
   }
 
   _checkResponse(res) {
@@ -82,6 +74,10 @@ export default class Api {
       return res.json();
     }
     return Promise.reject(`Ошибка ${res.status}`);
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse)
   }
 
 }

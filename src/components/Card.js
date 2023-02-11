@@ -1,6 +1,6 @@
 export default class Card {
   constructor(data, idProfile, templateSelector, callBackFunction) {
-    const { likeCard, deletelikeCard, deleteCard, handleCardClick } = callBackFunction;
+    const {likeCard, deletelikeCard, deleteCard, handleCardClick} = callBackFunction;
     this._likeCard = likeCard;
     this._deletelikeCard = deletelikeCard;
     this._deleteCard = deleteCard;
@@ -23,6 +23,7 @@ export default class Card {
     this._element.querySelector(".card__caption").textContent = this.name;
     this._element.querySelector(".card__like-count").textContent = this.countLikes;
     this._like = this._element.querySelector(".card__like");
+    this._countLikes = this._element.querySelector(".card__like-count");
     this._bin = document
       .querySelector("#mini-bin")
       .content.querySelector(".card__mini-bin")
@@ -55,7 +56,7 @@ export default class Card {
     if (!this._like.classList.contains("card__like_status_active")) {
       this._likeCard(idCard)
         .then((res) => {
-          this._element.querySelector(".card__like-count").textContent =
+          this._countLikes.textContent =
             res.likes.length;
           this._like.classList.add("card__like_status_active");
         })
@@ -65,7 +66,7 @@ export default class Card {
     } else {
       this._deletelikeCard(idCard)
         .then((res) => {
-          this._element.querySelector(".card__like-count").textContent =
+          this._countLikes.textContent =
             res.likes.length;
           this._like.classList.remove("card__like_status_active");
         })
@@ -74,17 +75,15 @@ export default class Card {
         });
     }
   }
+
   _deleteCardElement(idCard) {
     this._deleteCard(idCard)
-      .then(() => { this._bin.closest('.card').remove() })
-  }
-
-  _addMiniBin() {
-    const miniBinTemplate = document
-      .querySelector('#mini-bin')
-      .content
-      .querySelector('.card__mini-bin')
-      .cloneNode(true);
+      .then(() => {
+        this._bin.closest('.card').remove()
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   _onLike() {
@@ -93,7 +92,8 @@ export default class Card {
       this.likes.forEach(el => {
         if (el._id === this.idProfile) {
           likeStatus = true;
-        };
+        }
+        ;
       });
     }
     return likeStatus;

@@ -1,10 +1,10 @@
 const path = require('path'); // подключаем path к конфигу вебпак
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключите плагин 
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключите плагин
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подключили плагин
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // подключите к проекту mini-css-extract-plugin
 
 module.exports = {
-  entry: { main: './src/components/index.js' },
+  entry: { main: './src/pages/index.js' },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
@@ -58,5 +58,5 @@ module.exports = {
     }),
     new CleanWebpackPlugin(), // использовали плагин
     new MiniCssExtractPlugin() // подключение плагина для объединения файлов CSS
-  ] 
-} 
+  ]
+}
