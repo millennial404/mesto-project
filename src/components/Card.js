@@ -33,7 +33,7 @@ export default class Card {
       this.image.after(this._bin);
     }
 
-    if (this._onLike()) {
+    if (this._isLiked()) {
       this._like.classList.add("card__like_status_active");
     }
 
@@ -86,7 +86,7 @@ export default class Card {
       })
   }
 
-  _onLike() {
+  _isLiked() {
     let likeStatus = false;
     if (this.likes) {
       this.likes.forEach(el => {

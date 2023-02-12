@@ -42,7 +42,8 @@ const userInfo = new UserInfo(
     selectorAboutUser: '.profile__profession',
     selectorAvatarUser: '.profile__avatar'
   });
-userInfo.getUserInfo(() => api.getProfileData())
+api.getProfileData().then(data => userInfo.setUserInfo(data)).then(() => console.log(userInfo.idUser))
+
 
 const editProfile = new PopupWithForm('.popup_edit-profile', (data) => {
   api.setProfileData(data.name, data.profession)
@@ -83,8 +84,7 @@ const avaUpdatePopup = new PopupWithForm('.popup_updateAva', (data) => {
 });
 
 const editProfileOpen = () => {
-  inputNameProfile.value = nameProfile.textContent;
-  inputAboutProfile.value = professionProfile.textContent;
+  editProfile.setInputValues(userInfo.getUserInfo())
   editProfile.open()
 }
 

@@ -3,20 +3,20 @@ export default class UserInfo {
     this._slectorNameUser = document.querySelector(slectorNameUser);
     this._selectorAboutUser = document.querySelector(selectorAboutUser);
     this._selectorAvatarUser = document.querySelector(selectorAvatarUser);
+    this.idUser = "";
   }
 
-  getUserInfo(Callback) {
-    return Callback().then((userData) => {
-      return {
-        ...userData
-      };
-    }).then((userData) => this.setUserInfo(userData))
+  getUserInfo() {
+    return {
+      name: this._slectorNameUser.textContent,
+      profession: this._selectorAboutUser.textContent
+    }
   }
 
-  setUserInfo(userData) {
-    this._slectorNameUser.textContent = userData.name;
-    this._selectorAboutUser.textContent = userData.about;
-    this._selectorAvatarUser.src = userData.avatar;
-    return userData;
+  setUserInfo({name, about, avatar, _id}) {
+    this._slectorNameUser.textContent = name;
+    this._selectorAboutUser.textContent = about;
+    this._selectorAvatarUser.src = avatar;
+    this.idUser = _id;
   }
 }
