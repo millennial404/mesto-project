@@ -4,33 +4,33 @@ export default class Card {
     this._likeCard = likeCard;
     this._deletelikeCard = deletelikeCard;
     this._deleteCard = deleteCard;
-    this.likes = data.likes;
-    this.idCard = data._id;
-    this.name = data.name;
-    this.link = data.link;
-    this.ownerId = data.owner._id;
-    this.idProfile = idProfile;
-    this.countLikes = data.likes.length;
-    this.template = templateSelector;
-    this.handleCardClick = handleCardClick;
+    this._likes = data.likes;
+    this._idCard = data._id;
+    this._name = data.name;
+    this._link = data.link;
+    this._ownerId = data.owner._id;
+    this._idProfile = idProfile;
+    this._countLikes = data.likes.length;
+    this._template = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   generate() {
     this._element = this._getElement();
-    this.image = this._element.querySelector(".card__image");
-    this.image.src = this.link;
-    this.image.alt = this.name;
-    this._element.querySelector(".card__caption").textContent = this.name;
-    this._element.querySelector(".card__like-count").textContent = this.countLikes;
+    this._image = this._element.querySelector(".card__image");
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._element.querySelector(".card__caption").textContent = this._name;
+    this._element.querySelector(".card__like-count").textContent = this._countLikes;
     this._like = this._element.querySelector(".card__like");
-    this._countLikes = this._element.querySelector(".card__like-count");
+    this._countLikesEl = this._element.querySelector(".card__like-count");
     this._bin = document
       .querySelector("#mini-bin")
       .content.querySelector(".card__mini-bin")
       .cloneNode(true);
 
-    if (this.ownerId === this.idProfile) {
-      this.image.after(this._bin);
+    if (this._ownerId === this._idProfile) {
+      this._image.after(this._bin);
     }
 
     if (this._isLiked()) {
@@ -43,20 +43,16 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._bin.addEventListener("click", () =>
-      this._deleteCardElement(this.idCard)
-    );
-    this._like.addEventListener("click", () => this._onOffLike(this.idCard));
-    this.image.addEventListener("click", () =>
-      this.handleCardClick(this.image.src, this.image.alt)
-    );
+    this._bin.addEventListener("click", () => this._deleteCardElement());
+    this._like.addEventListener("click", () => this._onOffLike());
+    this._image.addEventListener("click", () => this._handleCardClick(this._image.src, this._image.alt));
   }
 
-  _onOffLike(idCard) {
+  _onOffLike() {
     if (!this._like.classList.contains("card__like_status_active")) {
-      this._likeCard(idCard)
+      this._likeCard(this._idCard)
         .then((res) => {
-          this._countLikes.textContent =
+          this._countLikesEl.textContent =
             res.likes.length;
           this._like.classList.add("card__like_status_active");
         })
@@ -64,9 +60,9 @@ export default class Card {
           console.log(err);
         });
     } else {
-      this._deletelikeCard(idCard)
+      this._deletelikeCard(this._idCard)
         .then((res) => {
-          this._countLikes.textContent =
+          this._countLikesEl.textContent =
             res.likes.length;
           this._like.classList.remove("card__like_status_active");
         })
@@ -76,8 +72,8 @@ export default class Card {
     }
   }
 
-  _deleteCardElement(idCard) {
-    this._deleteCard(idCard)
+  _deleteCardElement() {
+    this._deleteCard(this._idCard)
       .then(() => {
         this._bin.closest('.card').remove()
       })
@@ -88,9 +84,9 @@ export default class Card {
 
   _isLiked() {
     let likeStatus = false;
-    if (this.likes) {
-      this.likes.forEach(el => {
-        if (el._id === this.idProfile) {
+    if (this._likes) {
+      this._likes.forEach(el => {
+        if (el._id === this._idProfile) {
           likeStatus = true;
         }
         ;
@@ -101,7 +97,7 @@ export default class Card {
 
   _getElement() {
     const cardElement = document
-      .querySelector(this.template)
+      .querySelector(this._template)
       .content
       .querySelector('.card')
       .cloneNode(true);

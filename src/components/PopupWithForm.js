@@ -3,33 +3,33 @@ import Popup from "./Popup";
 export default class PopupWithForm extends Popup {
   constructor(selectorPopup, callBackSubmitForm) {
     super(selectorPopup);
-    this.callBackSubmitForm = callBackSubmitForm;
-    this.form = this._popup.querySelector('.popup__form');
+    this._callBackSubmitForm = callBackSubmitForm;
+    this._form = this._popup.querySelector('.popup__form');
     this._submitButton = this._popup.querySelector('.popup__button');
-    this._inputList = this.form.querySelectorAll('.popup__input')
-    this.submit = this.submit.bind(this);
+    this._inputList = this._form.querySelectorAll('.popup__input')
+    this._submit = this._submit.bind(this);
     this._submitBtnText = this._submitButton.textContent
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this.form.addEventListener('submit', this.submit)
+    this._form.addEventListener('submit', this._submit)
   }
 
   removeEventListeners() {
     super.removeEventListeners();
-    this.form.removeEventListener('submit', this.submit)
+    this._form.removeEventListener('submit', this._submit)
   }
 
-  submit(evt) {
+  _submit(evt) {
     evt.preventDefault();
     this.renderLoading(true);
-    this.callBackSubmitForm(this._getInputValues())
+    this._callBackSubmitForm(this._getInputValues())
   }
 
   close() {
     super.close();
-    this.form.reset();
+    this._form.reset();
   }
 
   renderLoading(isLoading, loadingText = 'Сохранение...') {
@@ -48,7 +48,7 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     this._values = {};
-    for (const i of this.form.elements) {
+    for (const i of this._form.elements) {
       if (i.type === "submit") {
         continue;
       }

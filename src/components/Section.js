@@ -20,13 +20,13 @@ export default class Section {
     });
   }
 
-  renderItems() {
-    this._items()
-      .then(([userData, cards]) => {
-        cards.forEach((item) => {
-          this._renderer(item, userData._id)
-        })
-      })
-  }
+//   renderItems() {
+//     this._items()
+//       .then(([userData, cards]) => {
+//         cards.forEach((item) => {
+//           this._renderer(item, userData._id)
+//         })
+//       })
+//   }
 
-}
+// }
