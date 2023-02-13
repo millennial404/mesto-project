@@ -11,11 +11,18 @@ import {
   buttonAddCardPopup,
   buttonAvaUpdate,
   buttonEditProfile,
-  inputAboutProfile, inputNameProfile, nameProfile, professionProfile,
   settingsValidate
 } from "../utils/constants";
 
 const api = new Api(apiOptions);
+Promise.all([api.getProfileData(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData)
+    sectionCards.renderItems(cards, userData);
+  })
+  .catch((err) => {
+    console.log(err)
+  });
 
 const createCard = (item, idProfile) => {
   const card = new Card(item, idProfile, '#card', {
@@ -28,22 +35,14 @@ const createCard = (item, idProfile) => {
 }
 
 const sectionCards = new Section({
-  items: () => Promise.all([api.getProfileData(), api.getInitialCards()]),
-  renderer: (item, idProfile) => {
-    sectionCards.addItem(createCard(item, idProfile));
+  renderer: (item) => {
+    sectionCards.addItem(createCard(item, userInfo.idUser));
   }
 }, '.cards');
 
-sectionCards.renderItems();
-
-const userInfo = new UserInfo(
-  {
-    slectorNameUser: '.profile__name',
-    selectorAboutUser: '.profile__profession',
-    selectorAvatarUser: '.profile__avatar'
-  });
-api.getProfileData().then(data => userInfo.setUserInfo(data)).then(() => console.log(userInfo.idUser))
-
+const userInfo = new UserInfo({
+  slectorNameUser: '.profile__name', selectorAboutUser: '.profile__profession', selectorAvatarUser: '.profile__avatar'
+});
 
 const editProfile = new PopupWithForm('.popup_edit-profile', (data) => {
   api.setProfileData(data.name, data.profession)
@@ -57,9 +56,9 @@ const editProfile = new PopupWithForm('.popup_edit-profile', (data) => {
 });
 
 const addCardPopup = new PopupWithForm('.popup_add-card', (data) => {
-  Promise.all([api.addCard(data.name_card, data.link_img), api.getProfileData()])
-    .then(([item, userData]) => {
-      sectionCards.addItemfirst(createCard(item, userData._id));
+  api.addCard(data.name_card, data.link_img)
+    .then((item) => {
+      sectionCards.addItemfirst(createCard(item, userInfo.idUser));
     })
     .then(() => addCardPopup.close())
     .catch((err) => {

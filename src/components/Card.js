@@ -1,8 +1,8 @@
 export default class Card {
   constructor(data, idProfile, templateSelector, callBackFunction) {
-    const {likeCard, deletelikeCard, deleteCard, handleCardClick} = callBackFunction;
+    const {likeCard, deleteLikeCard, deleteCard, handleCardClick} = callBackFunction;
     this._likeCard = likeCard;
-    this._deletelikeCard = deletelikeCard;
+    this._deleteLikeCard = deleteLikeCard;
     this._deleteCard = deleteCard;
     this._likes = data.likes;
     this._idCard = data._id;
@@ -20,10 +20,10 @@ export default class Card {
     this._image = this._element.querySelector(".card__image");
     this._image.src = this._link;
     this._image.alt = this._name;
-    this._element.querySelector(".card__caption").textContent = this._name;
-    this._element.querySelector(".card__like-count").textContent = this._countLikes;
-    this._like = this._element.querySelector(".card__like");
     this._countLikesEl = this._element.querySelector(".card__like-count");
+    this._element.querySelector(".card__caption").textContent = this._name;
+    this._countLikesEl.textContent = this._countLikes;
+    this._like = this._element.querySelector(".card__like");
     this._bin = document
       .querySelector("#mini-bin")
       .content.querySelector(".card__mini-bin")
@@ -60,7 +60,7 @@ export default class Card {
           console.log(err);
         });
     } else {
-      this._deletelikeCard(this._idCard)
+      this._deleteLikeCard(this._idCard)
         .then((res) => {
           this._countLikesEl.textContent =
             res.likes.length;
@@ -89,20 +89,19 @@ export default class Card {
         if (el._id === this._idProfile) {
           likeStatus = true;
         }
-        ;
       });
     }
     return likeStatus;
   }
 
   _getElement() {
-    const cardElement = document
+    this._cardElement = document
       .querySelector(this._template)
       .content
       .querySelector('.card')
       .cloneNode(true);
 
-    return cardElement;
+    return this._cardElement;
   }
 }
 
