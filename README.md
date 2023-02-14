@@ -1,4 +1,4 @@
-# Проект: Путешествие по России
+# Проект: Проект Mesto на ООП
 
 ### Обзор
 * О проекте
@@ -15,6 +15,11 @@
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 
-**Github-page**
+Исполнители:
+Захарченко Сергей
+Github: https://github.com/millennial404
+Email: millennial404@yandex.com
 
-* [Ссылка на страницу в Github-pages](https://millennial404.github.io/mesto-project/)
+Анна Петрова
+Github: https://github.com/Abrakadabra13
+Email: annapetrova13@ya.ru
